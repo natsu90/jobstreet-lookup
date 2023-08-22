@@ -1,0 +1,26 @@
+{
+  "name": "whatsthesalary-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/natsu90/whatsthesalary-web.git"
+  },
+  "author": "Sulaiman Sudirman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natsu90/whatsthesalary-web/issues"
+  },
+  "homepage": "https://github.com/natsu90/whatsthesalary-web#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "whatsthesalary": "github:natsu90/whatsthesalary"
+  },
+  "type": "module"
+}
