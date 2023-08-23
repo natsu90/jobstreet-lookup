@@ -10,6 +10,23 @@ const __dirname = new URL('.', import.meta.url).pathname;
 const app = express()
 const port = 3002
 
+const apiTimeout = 5 * 60 * 1000;
+app.use((req, res, next) => {
+    // Set the timeout for all HTTP requests
+    req.setTimeout(apiTimeout, () => {
+        let err = new Error('Request Timeout');
+        err.status = 408;
+        next(err);
+    });
+    // Set the server response timeout for all HTTP requests
+    res.setTimeout(apiTimeout, () => {
+        let err = new Error('Service Unavailable');
+        err.status = 503;
+        next(err);
+    });
+    next();
+})
+
 app.use(bodyParser.json());
 app.engine('html', ejs.renderFile)
 
@@ -44,8 +61,6 @@ process.on ('SIGINT', closeBrowser);
 process.on('exit', closeBrowser);
 
 // Start server
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })
-
-server.setTimeout(300000)

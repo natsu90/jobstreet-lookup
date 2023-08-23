@@ -48,7 +48,7 @@
 
                         if (!res.ok) {
                             const message = await res.text()
-                            notifier.alert(message)
+                            notifier.alert(message, {durations: {alert: 0}})
                             return
                         }
                         
