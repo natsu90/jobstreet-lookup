@@ -48,6 +48,7 @@ app.post('/', async (req, res) => {
 })
 
 const closeBrowser = async() => {
+    browser.off('disconnected')
     await browser.close()
 }
 
